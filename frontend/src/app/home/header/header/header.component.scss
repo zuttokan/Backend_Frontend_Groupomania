@@ -1,0 +1,63 @@
+nav {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.logo-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  height: 15px;
+  margin-top: 10px;
+}
+
+.logo-image img {
+  height: 4.5em;
+}
+
+.right-nav {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  align-self: right;
+  width: 75%;
+  margin-top: 20px;
+}
+
+a {
+  color: #fd2d01;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: #fd2b0169;
+  }
+}
+
+.active {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+button {
+  background-color: #ffd7d7;
+  color: #fd2d01;
+  transition: 0.5s;
+  border-radius: 50px;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+}
+
+button:hover {
+  box-shadow: #fd2d01 4px 4px 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+.toolbar {
+  background: white;
+  width: auto;
+  box-shadow: 0px -5px #ffd7d7;
+  height: 50px;
+}
+
+.logo {
+  max-width: 200px;
+}
+.logo-center {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}

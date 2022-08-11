@@ -1,0 +1,39 @@
+<form [formGroup]="postForm" *ngIf="!loading" class="container-responsif">
+  <mat-card class="example-card">
+    <mat-card-header class="align-center full-width">
+      <mat-card-title>
+        <mat-form-field outlined appearance="outline" class="full-width">
+          <mat-label>Votre message, içi. </mat-label>
+          <textarea matInput rows="1" formControlName="description"></textarea>
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <input
+        type="file"
+        accept="image/*"
+        #imageInput
+        (change)="onFileAdded($event)"
+      />
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="imageInput.click()"
+        class="add-image"
+        aria-label="Ajouter une image"
+      >
+        Ajouter une image
+      </button>
+      <img [src]="imagePreview" *ngIf="imagePreview" class="image-upload" />
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="onSubmit()"
+        [disabled]="postForm.invalid"
+        aria-label="Publier"
+      >
+        Partager !
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

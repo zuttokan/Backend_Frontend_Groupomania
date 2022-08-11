@@ -1,0 +1,47 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.container-responsif {
+  margin-top: 30px;
+}
+.align-center {
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+::ng-deep .mat-card-header-text {
+  width: 100%;
+}
+.buttonSubmitNewPost {
+  color: #fd2d01;
+}
+.image-upload {
+  max-height: 150px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.publish {
+  background-color: #fd2d01;
+}
+input[type="file"] {
+  display: none;
+}
+.add-image {
+  background-color: #4e5166;
+}
+@media screen and (max-width: 500px) {
+  .container-responsif {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+}
+@media all and (min-width: 501px) and (max-width: 800px) {
+  .container-responsif {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+}

@@ -1,0 +1,63 @@
+<div *ngIf="posts$ | async as posts">
+  <ng-container *ngFor="let post of posts.reverse()">
+    <div class="container mb80 container-responsif">
+      <div class="posts-block">
+        <div class="posts-content">
+          <div class="buttonChanges">
+            <button
+              class="buttonModify"
+              *ngIf="userId === post.userId || userAdmin"
+              (click)="openDialog(post._id)"
+              aria-label="Modifier"
+            >
+              Modifier
+            </button>
+            <button
+              class="buttonDelete"
+              *ngIf="userId === post.userId || userAdmin"
+              (click)="onDelete(post._id)"
+              aria-label="Supprimer"
+            >
+              Supprimer
+            </button>
+          </div>
+
+          <p>
+            {{ post.description }}
+          </p>
+
+          <ul class="post-meta list-inline">
+            <li class="list-inline-item">
+              <i class="fa fa-user-circle-o">{{ post.userEmail }}</i>
+            </li>
+            <li class="list-inline-item">
+              <span class="postDate">
+                en ligne à {{ post.date | date: "HH:mm le dd/MM/yyyy " }}
+              </span>
+            </li>
+          </ul>
+          <div class="img-container">
+            <img [src]="post.imageUrl" alt="" class="img-fluid mb20 imgsize" />
+          </div>
+
+          <div id="main-content">
+            <div>
+              <input
+                class="checkbox"
+                type="checkbox"
+                #checkbox
+                id="checkbox_{{ post._id }}"
+                [checked]="post.usersLiked.includes(userId)"
+                (change)="onLike(post._id, checkbox.checked)"
+              />
+
+              <label for="checkbox_{{ post._id }}">
+                <p class="likeItem">{{ post.likes }} Like</p>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
