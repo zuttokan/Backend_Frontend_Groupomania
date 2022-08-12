@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
-import { EditpostdialogComponent } from '../../edit-post/editpostdialog/editpostdialog.component';
-import { Post } from '../../../models/Post.model';
-import { PostsService } from '../../services/post.service';
+import { AuthService } from '../services/auth.service';
+import { EditPostComponent } from '../edit-post/editpost.component';
+import { Post } from '../models/Post.model';
+import { PostsService } from '../services/post.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -32,7 +32,7 @@ export class PostsComponent implements OnInit {
   }
   openDialog(postId: string) {
     // ouvre la popin dont le contenu est le composent "editpost en passant en paramètre le postId"
-    const dialogRef = this.dialog.open(EditpostdialogComponent, {
+    const dialogRef = this.dialog.open(EditPostComponent, {
       data: {
         postId: postId,
       },

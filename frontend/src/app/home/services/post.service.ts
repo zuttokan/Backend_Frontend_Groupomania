@@ -3,7 +3,7 @@ import { catchError, mapTo, of, Subject, tap, throwError } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Post } from 'src/app/models/Post.model';
+import { Post } from 'src/app/home/models/Post.model';
 
 @Injectable({
   providedIn: 'root',

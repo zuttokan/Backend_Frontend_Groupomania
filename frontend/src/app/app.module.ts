@@ -12,14 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home/home.component';
-import { headerComponent } from './home/header/header/header.component';
+import { headerComponent } from './home/header/header.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { LoginComponent } from './home/auth/login/login.component';
 import { SignupComponent } from './home/auth/signup/signup.component';
-import { CreatePostComponent } from './home/create-post/create-post/create-post.component';
-import { PostsComponent } from './home/posts/posts/posts.component';
+import { CreatePostComponent } from './home/create-post/create-post.component';
+import { PostsComponent } from './home/posts/posts.component';
 import { AuthInterceptor } from './home/interceptors/auth-interceptor'; //intercepteur des requêtes (vérifier si l'utilisateur est déjà authentifié)
-import { EditpostdialogComponent } from './home/edit-post/editpostdialog/editpostdialog.component';
+import { EditPostComponent } from './home/edit-post/editpost.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,7 +40,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     PostsComponent,
     LoginComponent,
     SignupComponent,
-    EditpostdialogComponent,
+    EditPostComponent,
     FooterComponent,
   ],
   imports: [

@@ -3,10 +3,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editpostdialog',
-  templateUrl: './editpostdialog.component.html',
-  styleUrls: ['./editpostdialog.component.scss'],
+  templateUrl: './editpost.component.html',
+  styleUrls: ['./editpost.component.scss'],
 })
-export class EditpostdialogComponent implements OnInit {
+export class EditPostComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {

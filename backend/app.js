@@ -1,18 +1,15 @@
-//__________________________________________Gestion de l'app_____________________________//
-//Importations des outils express et mongoose
 const express = require('express');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-const mongoose = require('mongoose'); //--BDD
+const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
-const path = require('path'); // Importation de path
+const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
-//--Connection à la base de données
 mongoose
   .connect(process.env.SECRET_DB, {
     useNewUrlParser: true,

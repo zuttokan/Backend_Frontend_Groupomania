@@ -8,10 +8,10 @@ import {
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, EMPTY, tap, catchError } from 'rxjs';
-import { Post } from 'src/app/models/Post.model';
-import { EditpostdialogComponent } from '../../edit-post/editpostdialog/editpostdialog.component';
-import { AuthService } from '../../services/auth.service';
-import { PostsService } from '../../services/post.service';
+import { Post } from 'src/app/home/models/Post.model';
+import { EditPostComponent } from '../edit-post/editpost.component';
+import { AuthService } from '../services/auth.service';
+import { PostsService } from '../services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -21,7 +21,6 @@ import { PostsService } from '../../services/post.service';
 export class CreatePostComponent implements OnInit {
   postForm!: UntypedFormGroup;
   mode!: string;
-  loading!: boolean;
   post!: Post;
   errorMsg!: string;
   imagePreview!: string;
@@ -35,18 +34,16 @@ export class CreatePostComponent implements OnInit {
     private router: Router,
     private postService: PostsService,
     private auth: AuthService,
-    private dialogRef: MatDialogRef<EditpostdialogComponent>
+    private dialogRef: MatDialogRef<EditPostComponent>
   ) {}
 
   ngOnInit() {
-    this.loading = true;
     this.mode = this.isEdit ? 'edit' : 'new';
     this.route.params
       .pipe(
         switchMap((params) => {
           if (this.mode === 'new') {
             this.initEmptyForm();
-            this.loading = false;
             return EMPTY;
           } else {
             return this.postService.getPostById(this.postId);
@@ -56,7 +53,6 @@ export class CreatePostComponent implements OnInit {
           if (post) {
             this.post = post;
             this.initModifyForm(post);
-            this.loading = false;
           }
         }),
         catchError((error) => (this.errorMsg = JSON.stringify(error)))
@@ -82,7 +78,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = true;
     const newPost = new Post();
     newPost.description = this.postForm.get('description')!.value;
     newPost.userId = this.auth.getUserId()
@@ -98,12 +93,10 @@ export class CreatePostComponent implements OnInit {
         .createPost(newPost, this.postForm.get('image')!.value)
         .pipe(
           tap(({ message }) => {
-            this.loading = false;
             this.initEmptyForm();
             this.postService.getPosts();
           }),
           catchError((error) => {
-            this.loading = false;
             this.errorMsg = error.message;
             return EMPTY;
           })
@@ -114,12 +107,10 @@ export class CreatePostComponent implements OnInit {
         .modifyPost(this.post._id, newPost, this.postForm.get('image')!.value)
         .pipe(
           tap(({ message }) => {
-            this.loading = false;
             this.dialogRef.close();
             this.postService.getPosts();
           }),
           catchError((error) => {
-            this.loading = false;
             this.errorMsg = error.message;
             return EMPTY;
           })
