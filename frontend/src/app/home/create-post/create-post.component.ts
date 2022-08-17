@@ -61,7 +61,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   initEmptyForm() {
-    //initialiser un formulaire vide
     this.postForm = this.formBuilder.group({
       description: [null, Validators.required],
       image: [null, Validators.required],
@@ -115,7 +114,7 @@ export class CreatePostComponent implements OnInit {
             return EMPTY;
           })
         )
-        .subscribe(); //observable qui permet de déclencher l'appel du service
+        .subscribe();
     }
   }
 

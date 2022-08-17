@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { catchError, EMPTY, switchMap, tap } from 'rxjs'; // pipe permet de combiner plusieurs fonction à la suite
+import { catchError, EMPTY, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -36,9 +36,8 @@ export class SignupComponent implements OnInit {
     this.auth
       .createUser(email, password)
       .pipe(
-        switchMap(() => this.auth.loginUser(email, password)), //permet de faire un autre traitement que le retour reçu
+        switchMap(() => this.auth.loginUser(email, password)),
         tap(() => {
-          // permet de notifier les changements du retour du serveur
           this.router.navigate(['/home']);
         }),
         catchError((error) => {
@@ -46,6 +45,6 @@ export class SignupComponent implements OnInit {
           return EMPTY;
         })
       )
-      .subscribe(); // permet de déclencher l'appel au serveur pour effectuer le traitement nécessaire
+      .subscribe();
   }
 }

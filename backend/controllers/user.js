@@ -1,9 +1,8 @@
-//--Cryptage des mots de passes
-const bcrypt = require('bcrypt'); //--Fonction de hachage ou Package de chiffrement
-const jwt = require('jsonwebtoken'); //--permet l'échange sécurisé de jetons entre plusieurs parties pour vérifier l’authenticité et l’intégrité des données
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-//--Enregistrement de nouveaux utilisateurs
+// Signup
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -32,7 +31,8 @@ exports.signup = (req, res, next) => {
       })
     );
 };
-//--Connecter un utilisateur existant
+
+// Login
 exports.login = (req, res, next) => {
   User.findOne({
     email: req.body.email,
@@ -60,8 +60,7 @@ exports.login = (req, res, next) => {
               },
               process.env.TOKEN_SECRET,
               {
-                // Clé secrète pour l'encodage
-                expiresIn: '24h', // Le token expirera au bout de 24h
+                expiresIn: '24h',
               }
             ),
           });
@@ -78,8 +77,3 @@ exports.login = (req, res, next) => {
       })
     );
 };
-// exports.logout = (req, res) => {
-//   res.cookie('jwt', '', { maxAge: 1 });
-//   res.clearCookie('jwt');
-//   res.status(200).json({ message: 'Réussi' });
-// };

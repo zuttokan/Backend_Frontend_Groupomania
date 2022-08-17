@@ -18,7 +18,7 @@ import { LoginComponent } from './home/auth/login/login.component';
 import { SignupComponent } from './home/auth/signup/signup.component';
 import { CreatePostComponent } from './home/create-post/create-post.component';
 import { PostsComponent } from './home/posts/posts.component';
-import { AuthInterceptor } from './home/interceptors/auth-interceptor'; //intercepteur des requêtes (vérifier si l'utilisateur est déjà authentifié)
+import { AuthInterceptor } from './home/interceptors/auth-interceptor';
 import { EditPostComponent } from './home/edit-post/editpost.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';

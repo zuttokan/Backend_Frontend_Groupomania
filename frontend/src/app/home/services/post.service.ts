@@ -17,7 +17,7 @@ export class PostsService {
     this.http
       .get<Post[]>('http://localhost:3000/api/post')
       .pipe(
-        tap((post) => this.posts$.next(post)), // posts$ observable pour actualiser le composant apres chaque requete get
+        tap((post) => this.posts$.next(post)),
         catchError((error) => {
           console.error(error.error.message);
           return of([]);
@@ -39,7 +39,7 @@ export class PostsService {
         {
           userId: this.auth.getUserId()
             ? this.auth.getUserId()
-            : (localStorage.getItem('userId') as string), // récupérer l'userId authentifié en cas de refresh de la page
+            : (localStorage.getItem('userId') as string),
           isLiked: isLiked ? true : false,
         }
       )
@@ -54,7 +54,7 @@ export class PostsService {
     formData.append('post', JSON.stringify(post));
     formData.append('image', image);
     return this.http
-      .post<{ message: string }>('http://localhost:3000/api/post', formData) //formData utilisé pour pouvoir envoyer l'image (en binair) sans l'objet
+      .post<{ message: string }>('http://localhost:3000/api/post', formData)
       .pipe(catchError((error) => throwError(error.error.message)));
   }
 

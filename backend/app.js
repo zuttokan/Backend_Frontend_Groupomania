@@ -33,10 +33,9 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-// Apply the rate limiting middleware to all requests
 app.use(limiter);
 
-//--En-tête de sécurité CORS
+// CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
@@ -51,10 +50,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// configuration du dossier "images" qui accueillera les images des sauces et qui sera mis à jour
-app.use('/images', express.static(path.join(__dirname, 'images'))); //--driname : Importation de node appelée path qui nous donne accès au chemin de notre système de fichier
-app.use('/api/auth', userRoutes); //Racine de tout ce qui est lié à l'authentification
-app.use('/api/post', postRoutes); //Racine de tout ce qui est lié aux posts
+// Folder "images" that will host the images
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/api/auth', userRoutes);
+app.use('/api/post', postRoutes);
 
 app.use((req, res) => {
   res.json({
@@ -62,5 +61,4 @@ app.use((req, res) => {
   });
 });
 
-// Exportation
 module.exports = app;

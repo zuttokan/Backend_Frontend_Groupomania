@@ -31,7 +31,6 @@ export class PostsComponent implements OnInit {
     this.userAdmin = this.auth.userAdmin;
   }
   openDialog(postId: string) {
-    // ouvre la popin dont le contenu est le composent "editpost en passant en paramètre le postId"
     const dialogRef = this.dialog.open(EditPostComponent, {
       data: {
         postId: postId,

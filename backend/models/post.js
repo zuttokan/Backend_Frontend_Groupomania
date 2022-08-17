@@ -1,39 +1,38 @@
-// Importation de Mongoose
 const mongoose = require('mongoose');
-// Model des post
+
 const postSchema = mongoose.Schema({
-  userId: { //-- l'identifiant MongoDB unique de l'utilisateur qui a créé le post
+  userId: {
     type: String,
-    required: true
+    required: true,
   },
   userEmail: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
-  imageUrl: { //-- l'URL de l'image à téléchargée par l'utilisateur
+  imageUrl: {
     type: String,
-    required: true
+    required: true,
   },
-  likes: { //-- nombre d'utilisateurs qui aiment (= likent) le post
+  likes: {
     type: Number,
-    required: true
+    required: true,
   },
-  usersLiked: { //-- tableau des identifiants des utilisateurs qui ont aimé (= liked) le post
-    type: ["String <userId>"],
-    required: true
+  usersLiked: {
+    type: ['String <userId>'],
+    required: true,
   },
   date: {
     type: Date,
-    required: true
+    required: true,
   },
   isLiked: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
-// Exportation du model 'post'
+
 module.exports = mongoose.model('post', postSchema);
