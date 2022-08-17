@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth$ = new BehaviorSubject<boolean>(false); //behaviorsubject (false) ferme tt les vues qui necessitent une auth
+  isAuth$ = new BehaviorSubject<boolean>(false);
   private authToken = '';
   private userId = '';
   private userEmail = '';
