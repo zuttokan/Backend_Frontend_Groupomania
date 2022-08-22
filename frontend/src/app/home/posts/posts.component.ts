@@ -15,20 +15,21 @@ import { PostsService } from '../services/post.service';
 export class PostsComponent implements OnInit {
   post$!: Observable<Post>;
   userId!: string;
-  likePending!: boolean;
+  //likePending!: boolean;
   liked!: boolean;
   isLikedValue: boolean = false;
   likes!: number;
   errorMessage!: string;
   posts$ = new BehaviorSubject<Post[]>([]);
-  userAdmin!: string;
+  userAdmin!: boolean;
   constructor(
     private postService: PostsService,
     private dialog: MatDialog,
     private auth: AuthService,
     private router: Router
   ) {
-    this.userAdmin = this.auth.userAdmin;
+    this.userAdmin = this.auth.getUserAdmin();
+    console.log(this.userAdmin);
   }
   openDialog(postId: string) {
     const dialogRef = this.dialog.open(EditPostComponent, {
