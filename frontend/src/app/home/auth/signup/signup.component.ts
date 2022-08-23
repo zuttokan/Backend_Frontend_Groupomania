@@ -27,16 +27,18 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
+      isAdmin: [null],
     });
   }
 
   onSignup() {
     const email = this.signupForm.get('email')!.value;
     const password = this.signupForm.get('password')!.value;
+    const isAdmin = this.signupForm.get('isAdmin')!.value;
     this.auth
-      .createUser(email, password)
+      .createUser(email, password, isAdmin)
       .pipe(
-        switchMap(() => this.auth.loginUser(email, password)),
+        switchMap(() => this.auth.loginUser(email, password, isAdmin)),
         tap(() => {
           this.router.navigate(['/home']);
         }),

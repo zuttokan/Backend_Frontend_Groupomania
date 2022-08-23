@@ -8,4 +8,5 @@ export class Post {
   userId!: string;
   date!: Date | string;
   isLiked!: boolean;
+  userAdmin!: boolean;
 }

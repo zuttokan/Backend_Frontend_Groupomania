@@ -16,6 +16,7 @@ import { catchError, EMPTY, tap } from 'rxjs';
 export class LoginComponent implements OnInit {
   loginForm!: UntypedFormGroup;
   errorMsg!: string;
+  isAdmin!: boolean;
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -27,14 +28,16 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
+      isAdmin: [],
     });
   }
 
   onLogin() {
     const email = this.loginForm.get('email')!.value;
     const password = this.loginForm.get('password')!.value;
+    const isAdmin = this.loginForm.get('isAdmin')!.value;
     this.auth
-      .loginUser(email, password)
+      .loginUser(email, password, isAdmin)
       .pipe(
         tap(() => {
           this.router.navigate(['/home']);
