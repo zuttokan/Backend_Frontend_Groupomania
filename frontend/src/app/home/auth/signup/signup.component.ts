@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, switchMap, tap } from 'rxjs';
@@ -14,11 +10,11 @@ import { catchError, EMPTY, switchMap, tap } from 'rxjs';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  signupForm!: UntypedFormGroup;
+  signupForm!: FormGroup;
   errorMsg!: string;
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router
   ) {}
@@ -27,7 +23,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
-      isAdmin: [null],
+      isAdmin: [],
     });
   }
 

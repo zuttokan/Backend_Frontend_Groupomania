@@ -12,8 +12,7 @@ export class AuthService {
   private authToken = '';
   private userId = '';
   private userEmail = '';
-  //private isAdmin = true;
-  isAdmin!: boolean;
+  private isAdmin!: boolean;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -27,6 +26,7 @@ export class AuthService {
   getToken() {
     return this.authToken;
   }
+
   getUserId() {
     return this.userId;
   }
@@ -36,10 +36,7 @@ export class AuthService {
   getUserAdmin() {
     return this.isAdmin;
   }
-
   loginUser(email: string, password: string, isAdmin: boolean) {
-    console.log(isAdmin);
-    console.log(email);
     return this.http
       .post<{ userId: string; token: string; userEmail: string }>(
         'http://localhost:3000/api/auth/login',
@@ -52,6 +49,8 @@ export class AuthService {
           this.authToken = token;
           this.isAuth$.next(true);
           this.userEmail = userEmail;
+          console.log(userEmail);
+
           this.router.navigate(['/home']);
         })
       );

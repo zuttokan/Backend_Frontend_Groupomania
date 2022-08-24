@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { catchError, EMPTY, tap } from 'rxjs';
@@ -14,12 +10,12 @@ import { catchError, EMPTY, tap } from 'rxjs';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm!: UntypedFormGroup;
+  loginForm!: FormGroup;
   errorMsg!: string;
   isAdmin!: boolean;
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router
   ) {}
