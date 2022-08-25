@@ -130,6 +130,7 @@ exports.deletePost = (req, res, next) => {
 exports.getAllPosts = (req, res, next) => {
   Post.find()
     .then((posts) => {
+      console.log(posts);
       res.status(200).json(posts);
     })
     .catch((error) => {

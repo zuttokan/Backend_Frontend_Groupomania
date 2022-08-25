@@ -15,23 +15,23 @@ import { PostsService } from '../services/post.service';
 export class PostsComponent implements OnInit {
   post$!: Observable<Post>;
   userId!: string;
-  likePending!: boolean;
+  //likePending!: boolean;
   liked!: boolean;
   isLikedValue: boolean = false;
   likes!: number;
   errorMessage!: string;
   posts$ = new BehaviorSubject<Post[]>([]);
-  userAdmin!: string;
+  userAdmin!: boolean;
   constructor(
     private postService: PostsService,
     private dialog: MatDialog,
     private auth: AuthService,
     private router: Router
   ) {
-    //this.userAdmin = this.auth.userAdmin;
+    this.userAdmin = this.auth.getUserAdmin();
+    console.log(this.userAdmin);
   }
   openDialog(postId: string) {
-    // ouvre la popin dont le contenu est le composent "editpost en passant en paramètre le postId"
     const dialogRef = this.dialog.open(EditPostComponent, {
       data: {
         postId: postId,
@@ -40,7 +40,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.userAdmin = this.auth.getUserAdmin();
+    this.userAdmin = this.auth.getUserAdmin();
     this.userId = this.auth.getUserId()
       ? this.auth.getUserId()
       : (localStorage.getItem('userId') as string);

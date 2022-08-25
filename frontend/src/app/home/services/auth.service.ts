@@ -38,13 +38,19 @@ export class AuthService {
   }
   loginUser(email: string, password: string, isAdmin: boolean) {
     return this.http
-      .post<{ userId: string; token: string; userEmail: string }>(
-        'http://localhost:3000/api/auth/login',
-        { email: email, password: password, isAdmin: isAdmin }
-      )
+      .post<{
+        userId: string;
+        token: string;
+        userEmail: string;
+        isAdmin: boolean;
+      }>('http://localhost:3000/api/auth/login', {
+        email: email,
+        password: password,
+        isAdmin: isAdmin,
+      })
       .pipe(
-        tap(({ userId, token, userEmail }) => {
-          this.isAdmin = this.isAdmin;
+        tap(({ userId, token, userEmail, isAdmin }) => {
+          this.isAdmin = isAdmin;
           this.userId = userId;
           this.authToken = token;
           this.isAuth$.next(true);
