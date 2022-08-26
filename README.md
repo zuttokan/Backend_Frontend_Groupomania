@@ -1,6 +1,6 @@
-# PROJET 7 - OPENCLASSROOMS - DEVELOPPEUR WEB
+# Groupomania - Réseau social d'entreprise
 
-## Groupomania - Réseau social d'entreprise
+## PROJET 7 - OPENCLASSROOMS - DEVELOPPEUR WEB
 
 ## Le projet contient les technologies suivantes:
 
@@ -8,7 +8,7 @@
 - <a  href="https://expressjs.com/"  title="Express"><img  src="https://github.com/get-icon/geticon/raw/master/icons/express.svg"  alt="Express"  width="25px"  height="21px"> Express.js</a>
 - <a  href="https://www.mongodb.com/"  title="Express"><img  src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg"  alt="Mongo Db"  width="25px"  height="21px"> Mongo Db</a>
 
-- <a  href="https://angular.io/"  title="Angular"><img  src="https://fossies.org/linux/angular/aio/src/assets/images/logos/angular/angular.png"  alt="Angular"  width="21px"  height="21px"> Angular</a>
+- <a  href="https://angular.io/"  title="Angular"><img  src="https://fossies.org/linux/angular/aio/src/assets/images/logos/angular/angular.png"  alt="Angular"  width="25px"  height="21px"> Angular</a>
 
 ## Démarrer le Backend
 
@@ -20,12 +20,16 @@
 Git clone https://github.com/zuttokan/Groupomania
 ```
 
-- Depuis votre terminal exécutez la commande : npm install
-  (cela installera toutes les dépendences nécessaires pour le projet)
-
 ### lancer le serveur:
 
-- Depuis votre terminal lancez la commande : nodemon server
+- Depuis votre terminal ouvrez une ligne de commande :
+
+```
+cd backend
+npm install
+node server
+
+```
 
 ### Créer à la racine du backend un fichier .env contenant les variables suivantes :
 
@@ -41,14 +45,14 @@ isAdmin = (l'adresse mail spécifique au compte administrateur)
 
 ### Démarrer le front:
 
-- Depuis votre terminal exécutez la commande : npm install
-  (cela installera toutes les dépendences nécessaires pour le projet)
+- Depuis votre terminal ouvrez une ligne de commande :
 
-### Assurez-vous que vous avez l'[Angular CLI](https://github.com/angular/angular-cli#installation) installée globalement.
+```
+cd frontend
+npm install
+ng serve
 
-### Démmarrer le front:
-
-- Depuis votre terminal lancez la commande : ng serve
+```
 
 - Ouvrir le navigateur a l'adresse http://localhost:4200/
 
@@ -57,16 +61,16 @@ isAdmin = (l'adresse mail spécifique au compte administrateur)
 Le site permet :
 
 <ul>
-  <li>Inscription ou connexion via l'email et un mot de passe</li>
-  <li>Partager des posts contenant du texte et une image </li>
-  <li>L'afficahge des posts se fait de magniére antéchronologique</li>
-  <li>Chaque post contient sont datage de création ainsi que le mail de sont créateur</li>
-  <li>Chaque utilisateur à la possibilité de modifier ou supprimer ses propres posts</li>
-  <li>Il est possible de liker un post (ou de le retirer)</li>
+  <li>Inscription ou connexion via l'email avec un mot de passe.</li>
+  <li>Partager des posts contenant du texte et une image.</li>
+  <li>L'affichage des posts se fait de magniére antéchronologique.</li>
+  <li>Chaque post contient sont datage de création ainsi que le mail de sont créateur.</li>
+  <li>Chaque utilisateur à la possibilité de modifier ou supprimer ses propres posts.</li>
+  <li>Il est possible de liker un post (ou de le retirer).</li>
 </ul>
 
-Un compte Administrateur est présent afin de faire de la modération.
-Il a la possibilité de modifier ou de supprimer les posts utilisateurs, ainsi qu'en créer si necéssaire.
+- Un compte Administrateur est présent afin de faire de la modération.
+  Il a la possibilité de modifier ou de supprimer les posts utilisateurs, ainsi qu'en créer si necéssaire.
 
 ### Fonctionnalités techniques:
 
