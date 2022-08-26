@@ -10,9 +10,9 @@
 
 - <a  href="https://angular.io/"  title="Angular"><img  src="https://fossies.org/linux/angular/aio/src/assets/images/logos/angular/angular.png"  alt="Angular"  width="25px"  height="21px"> Angular</a>
 
-## Démarrer le Backend
+## Backend
 
-### clonez le repository:
+### Cloner le repository:
 
 - Faites un git clone ou téléchargez la version Zip
 
@@ -20,15 +20,14 @@
 Git clone https://github.com/zuttokan/Groupomania
 ```
 
-### lancer le serveur:
+### Lancer le serveur:
 
 - Depuis votre terminal ouvrez une ligne de commande :
 
 ```
-cd backend
-npm install
-node server
-
+cd backend (Dirige dans le bon dossier)
+npm install (Permet d'installer toutes les dépendences)
+node server (Lance le serveur)
 ```
 
 ### Créer à la racine du backend un fichier .env contenant les variables suivantes :
@@ -41,24 +40,24 @@ TOKEN_SECRET = ( Votre clé secret de décodage du Token)
 
 isAdmin = (l'adresse mail spécifique au compte administrateur)
 
-## Groupomania / Frontend
+## Frontend
 
 ### Démarrer le front:
 
 - Depuis votre terminal ouvrez une ligne de commande :
 
 ```
-cd frontend
-npm install
-ng serve
+cd frontend (Dirige dans le bon dossier)
+npm install (Permet d'installer toutes les dépendences)
+ng serve (Lance le front)
 
 ```
+
+### Pour accéder à l'interface du site:
 
 - Ouvrir le navigateur a l'adresse http://localhost:4200/
 
 ### Fonctionnalités utilisateurs:
-
-Le site permet :
 
 <ul>
   <li>Inscription ou connexion via l'email avec un mot de passe.</li>
@@ -75,16 +74,16 @@ Le site permet :
 ### Fonctionnalités techniques:
 
 <ul>
-<li>La session de l’utilisateur persiste durant sa connection</li>
-<li>Les données de connexion sont sécurisées</li>
+<li>La session de l’utilisateur persiste durant sa connection.</li>
+<li>Les données de connexion sont sécurisées.</li>
 </ul>
 
 ### Identité graphique:
 
 <ul>
-<li>La police d'éciture utliser est Lato</li>
-<li>La palette de couleur principale utiliser </li>
+<li>La police d'éciture est Lato</li>
+<li>La palette de couleur principale utiliser est :
 <li>Primaire : #FD2D01</li>
 <li>Secondaire : #FFD7D7</li>
-<li>Tertiaire : #4E5166</li>
+<li>Tertiaire : #4E5166</li></li>
 </ul>
