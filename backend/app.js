@@ -8,15 +8,14 @@ const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 const path = require('path');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 
 mongoose
   .connect(process.env.SECRET_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch((e) => console.log(e, 'Connexion à MongoDB échouée !'));
+  .then(() => console.log('MongoDB connection successful !!'))
+  .catch((e) => console.log(e, 'MongoDB connection failed  !'));
 
 app.use(
   helmet({
@@ -25,15 +24,6 @@ app.use(
     },
   })
 );
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
-
-app.use(limiter);
 
 // CORS
 app.use((req, res, next) => {
@@ -57,7 +47,7 @@ app.use('/api/post', postRoutes);
 
 app.use((req, res) => {
   res.json({
-    message: 'requête bien reçue !',
+    message: 'request well received !',
   });
 });
 

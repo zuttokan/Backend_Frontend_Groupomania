@@ -81,7 +81,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.loading = true;
     const newPost = new Post();
     newPost.description = this.postForm.get('description')!.value;
     newPost.userId = this.auth.getUserId()
@@ -93,18 +92,15 @@ export class CreatePostComponent implements OnInit {
       : (localStorage.getItem('userEmail') as string);
 
     newPost.date = new Date().toISOString();
-    console.log(newPost.userEmail);
     if (this.mode === 'new') {
       this.postService
         .createPost(newPost, this.postForm.get('image')!.value)
         .pipe(
           tap(({ message }) => {
-            //this.loading = false;
             this.initEmptyForm();
             this.postService.getPosts();
           }),
           catchError((error) => {
-            //this.loading = false;
             this.errorMsg = error.message;
             return EMPTY;
           })
@@ -115,7 +111,6 @@ export class CreatePostComponent implements OnInit {
         .modifyPost(this.post._id, newPost, this.postForm.get('image')!.value)
         .pipe(
           tap(({ message }) => {
-            //this.loading = false;
             this.dialogRef.close();
             this.postService.getPosts();
           }),

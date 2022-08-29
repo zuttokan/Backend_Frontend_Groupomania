@@ -16,7 +16,7 @@ exports.signup = (req, res, next) => {
         .save()
         .then(() =>
           res.status(201).json({
-            message: 'Utilisateur créé !',
+            message: 'User created !',
           })
         )
         .catch((error) =>
@@ -40,7 +40,7 @@ exports.login = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          error: 'Utilisateur non trouvé !',
+          error: 'User not Found !',
         });
       }
       bcrypt
@@ -48,7 +48,7 @@ exports.login = (req, res, next) => {
         .then((valid) => {
           if (!valid) {
             return res.status(401).json({
-              error: 'Mot de passe incorrect !',
+              error: 'incorrect password !',
             });
           }
           res.status(200).json({

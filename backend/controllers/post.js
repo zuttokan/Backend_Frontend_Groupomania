@@ -19,7 +19,7 @@ exports.createPost = (req, res, next) => {
     .save()
     .then(() =>
       res.status(201).json({
-        message: 'publication enregistrée !',
+        message: 'Post Created !!',
       })
     )
     .catch((error) =>
@@ -44,20 +44,23 @@ exports.getOnePost = (req, res, next) => {
     });
 };
 
-// Modification a Post
+// Update a Post
 exports.modifyPost = (req, res, next) => {
   const postId = req.params.id;
-  console.log(req.body);
+  //console.log(req.body);
   if (req.file) {
-    Post.findById(postId)
+    Post.findById(
+      postId
+    ) /* Retrieving post in the database and checking and user */
       .then((post) => {
+        /* Suppress old file */
         const filename = post.imageUrl.split('/images/')[1];
         const sentImageUrl = `${req.protocol}://${req.get('host')}/images/${
           req.file.filename
         }`;
-        console.log(sentImageUrl);
         fs.unlink(`images/${filename}`, () => {
           Post.updateOne(
+            /* post Updated */
             {
               _id: postId,
             },
@@ -70,7 +73,7 @@ exports.modifyPost = (req, res, next) => {
           )
             .then(() =>
               res.status(200).json({
-                message: 'objet modifié',
+                message: 'Picture updated',
               })
             )
             .catch((err) => res.status(400).json(err));
@@ -89,7 +92,7 @@ exports.modifyPost = (req, res, next) => {
     )
       .then(() =>
         res.status(200).json({
-          message: 'objet modifié',
+          message: 'text updated',
         })
       )
       .catch((err) => res.status(400).json(err));
@@ -109,7 +112,7 @@ exports.deletePost = (req, res, next) => {
         })
           .then(() =>
             res.status(200).json({
-              message: 'Publication supprimée !',
+              message: 'Post deleted !',
             })
           )
           .catch((error) =>
@@ -130,7 +133,6 @@ exports.deletePost = (req, res, next) => {
 exports.getAllPosts = (req, res, next) => {
   Post.find()
     .then((posts) => {
-      console.log(posts);
       res.status(200).json(posts);
     })
     .catch((error) => {
@@ -149,7 +151,10 @@ exports.likePost = (req, res, next) => {
     let newUsersLiked = post.usersLiked;
     if (isLiked) {
       if (post.usersLiked.includes(userId)) {
-        newUsersLiked.splice(newUsersLiked.indexOf(userId), 1);
+        newUsersLiked.splice(
+          newUsersLiked.indexOf(userId),
+          1
+        ); /* The splice() method modifies the contents of an array by removing elements or adding */
       } else {
         newUsersLiked.push(userId);
       }
@@ -170,7 +175,7 @@ exports.likePost = (req, res, next) => {
     )
       .then(() =>
         res.status(200).json({
-          message: 'Objet modifié !',
+          message: 'Like updated !',
         })
       )
       .catch((error) =>

@@ -55,7 +55,7 @@ export class AuthService {
           this.authToken = token;
           this.isAuth$.next(true);
           this.userEmail = userEmail;
-          console.log(userEmail);
+          //console.log(userEmail);
 
           this.router.navigate(['/home']);
         })

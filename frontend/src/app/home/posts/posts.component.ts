@@ -15,7 +15,6 @@ import { PostsService } from '../services/post.service';
 export class PostsComponent implements OnInit {
   post$!: Observable<Post>;
   userId!: string;
-  //likePending!: boolean;
   liked!: boolean;
   isLikedValue: boolean = false;
   likes!: number;
@@ -29,9 +28,10 @@ export class PostsComponent implements OnInit {
     private router: Router
   ) {
     this.userAdmin = this.auth.getUserAdmin();
-    console.log(this.userAdmin);
+    //console.log(this.userAdmin);
   }
   openDialog(postId: string) {
+    /*opens the popin whose content is "editpost"*/
     const dialogRef = this.dialog.open(EditPostComponent, {
       data: {
         postId: postId,
@@ -58,7 +58,6 @@ export class PostsComponent implements OnInit {
         }),
         catchError((error) => {
           this.errorMessage = error.message;
-          console.error(error);
           return EMPTY;
         })
       )
@@ -66,23 +65,18 @@ export class PostsComponent implements OnInit {
   }
 
   like(value: any) {
-    console.log(value);
     this.isLikedValue = value;
   }
 
   onLike(postId: string, isLiked: boolean) {
-    console.log(postId, isLiked);
-    console.log(this.isLikedValue);
     this.postService
       .likePost(postId, isLiked)
       .pipe(
         tap((liked) => {
-          console.log(liked);
           this.postService.getPosts();
         }),
         catchError((error) => {
           this.errorMessage = error.message;
-          console.error(error);
           return EMPTY;
         })
       )
