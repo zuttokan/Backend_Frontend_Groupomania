@@ -10,6 +10,10 @@
 
 - <a  href="https://angular.io/"  title="Angular"><img  src="https://fossies.org/linux/angular/aio/src/assets/images/logos/angular/angular.png"  alt="Angular"  width="25px"  height="21px"> Angular</a>
 
+### Visionner la video du projet
+
+https://youtu.be/yceB1LkwV_s
+
 ## Backend
 
 ### Cloner le repository:
