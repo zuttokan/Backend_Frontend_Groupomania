@@ -16,10 +16,12 @@ export class AuthGuard implements CanActivate {
     }
   }
 
+  // Check the authentification
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    /* Observable return true if the user is valid*/
     return this.auth.isAuth$.pipe(
       take(1),
       tap((auth) => {

@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  isAuth$ = new BehaviorSubject<boolean>(false);
+  /*BehaviorSubject send and retrieve values to an Observable*/
+  isAuth$ = new BehaviorSubject<boolean>(false); //BehaviorSubject (false) close all the views that require a auth
 
   private authToken = '';
   private userId = '';
