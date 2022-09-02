@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const fs = require('fs');
+const auth = require('../middleware/auth');
 
 // Created Post
 exports.createPost = (req, res, next) => {
@@ -59,43 +60,64 @@ exports.modifyPost = (req, res, next) => {
           req.file.filename
         }`;
         fs.unlink(`images/${filename}`, () => {
-          Post.updateOne(
-            /* post Updated */
-            {
-              _id: postId,
-            },
-            {
-              ...JSON.parse(req.body.post),
-              _id: postId,
-              imageUrl: sentImageUrl,
-              date: new Date(Date.now()),
-            }
-          )
-            .then(() =>
-              res.status(200).json({
-                message: 'Picture updated',
-              })
+          console.log(JSON.parse(req.body.post));
+
+          const Obj = JSON.parse(req.body.post); /*Safety connection*/
+          const desc = Obj.description; /*Safety connection*/
+          const AuthId = Obj.userId; /*Safety connection*/
+
+          console.log(desc);
+          console.log(AuthId);
+          console.log(req.auth);
+
+          if (req.auth.isAdmin || req.auth.userId == AuthId) {
+            /*Safety connection*/
+            Post.updateOne(
+              /* post Updated */
+              {
+                _id: postId,
+              },
+              {
+                //...JSON.parse(req.body.post),
+                description: desc,
+                userId: AuthId,
+                //_id: postId,
+                imageUrl: sentImageUrl,
+                date: new Date(Date.now()),
+              }
             )
-            .catch((err) => res.status(400).json(err));
+              .then(() =>
+                res.status(200).json({
+                  message: 'Picture updated',
+                })
+              )
+              .catch((err) => res.status(400).json(err));
+          }
         });
       })
       .catch((err) => res.status(500).json(err));
   } else {
-    Post.updateOne(
-      {
-        _id: postId,
-      },
-      {
-        ...req.body,
-        _id: postId,
-      }
-    )
-      .then(() =>
-        res.status(200).json({
-          message: 'text updated',
-        })
+    console.log(req.body);
+    const Obj = req.body;
+    const desc = Obj.description;
+    const AuthId = Obj.userId;
+    if (req.auth.isAdmin || req.auth.userId == AuthId) {
+      Post.updateOne(
+        {
+          _id: postId,
+        },
+        {
+          description: desc,
+          userId: AuthId,
+        }
       )
-      .catch((err) => res.status(400).json(err));
+        .then(() =>
+          res.status(200).json({
+            message: 'text updated',
+          })
+        )
+        .catch((err) => res.status(400).json(err));
+    }
   }
 };
 
@@ -107,19 +129,25 @@ exports.deletePost = (req, res, next) => {
     .then((post) => {
       const filename = post.imageUrl.split('/images/')[1];
       fs.unlink(`images/${filename}`, () => {
-        Post.deleteOne({
-          _id: req.params.id,
-        })
-          .then(() =>
-            res.status(200).json({
-              message: 'Post deleted !',
-            })
-          )
-          .catch((error) =>
-            res.status(400).json({
-              error,
-            })
-          );
+        const Obj = req.body; /*Safety connection*/
+        const desc = Obj.description; /*Safety connection*/
+        const AuthId = Obj.userId; /*Safety connection*/
+        if (req.auth.isAdmin || req.auth.userId == AuthId) {
+          /*Safety connection*/
+          Post.deleteOne({
+            _id: req.params.id,
+          })
+            .then(() =>
+              res.status(200).json({
+                message: 'Post deleted !',
+              })
+            )
+            .catch((error) =>
+              res.status(400).json({
+                error,
+              })
+            );
+        }
       });
     })
     .catch((error) =>
