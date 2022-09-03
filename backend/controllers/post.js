@@ -121,6 +121,11 @@ exports.modifyPost = (req, res, next) => {
 
 // Delete a Post
 exports.deletePost = (req, res, next) => {
+  const Obj = req.body;
+  const desc = Obj.description;
+  const AuthId = Obj.userId;
+  if (req.auth.isAdmin || req.auth.userId == AuthId) {
+  }
   Post.findOne({
     _id: req.params.id,
   })
