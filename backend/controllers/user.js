@@ -7,6 +7,9 @@ exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
+      if (req.body.password.length < 6) {
+        throw new Error('Error password length');
+      }
       const user = new User({
         email: req.body.email,
         password: hash,

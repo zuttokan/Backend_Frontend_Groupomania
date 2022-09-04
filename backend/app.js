@@ -46,9 +46,7 @@ app.use('/api/auth', userRoutes);
 app.use('/api/post', postRoutes);
 
 app.use((req, res) => {
-  res.json({
-    message: 'request well received !',
-  });
+  res.json({});
 });
 
 module.exports = app;
