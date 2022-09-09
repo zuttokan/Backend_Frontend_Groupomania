@@ -92,3 +92,6 @@ ng serve (Lance le front)
 
 ## Page de connection et inscription
 ![connexiongroupo](https://user-images.githubusercontent.com/100352779/189333971-4b95eab9-a5cd-4cc1-9eff-53c21e0a2980.jpg)
+
+## Page des messages
+![page messages](https://user-images.githubusercontent.com/100352779/189334272-0e4a5a35-54a4-4f3c-84e6-ece199e9297b.png)
