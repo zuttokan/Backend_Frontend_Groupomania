@@ -89,3 +89,6 @@ ng serve (Lance le front)
 <li>La palette de couleur principale utiliser est :Primaire : #FD2D01 / Secondaire : #FFD7D7 /Tertiaire : #4E5166
 </li>
 </ul>
+
+## Page de connection et inscription
+![connexiongroupo](https://user-images.githubusercontent.com/100352779/189333971-4b95eab9-a5cd-4cc1-9eff-53c21e0a2980.jpg)
