@@ -7,6 +7,7 @@
 - <a  href="https://nodejs.org/"  title="Node.js"><img  src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg"  alt="Node.js"  width="25px"  height="21px"> Node.js</a>
 - <a  href="https://expressjs.com/"  title="Express"><img  src="https://github.com/get-icon/geticon/raw/master/icons/express.svg"  alt="Express"  width="25px"  height="21px"> Express.js</a>
 - <a  href="https://www.mongodb.com/"  title="Express"><img  src="https://github.com/get-icon/geticon/raw/master/icons/mongodb-icon.svg"  alt="Mongo Db"  width="25px"  height="21px"> Mongo Db</a>
+- <a  href="https://www.w3schools.com/js/"  title="JAVASCRIPT"><img  src="https://github.com/get-icon/geticon/blob/master/icons/javascript.svg"  alt="JAVASCRIPT"  width="25px"  height="21px"> JAVASCRIPT</a>
 
 - <a  href="https://angular.io/"  title="Angular"><img  src="https://fossies.org/linux/angular/aio/src/assets/images/logos/angular/angular.png"  alt="Angular"  width="25px"  height="21px"> Angular</a>
 
