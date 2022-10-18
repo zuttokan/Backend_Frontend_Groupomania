@@ -1,6 +1,7 @@
-# Groupomania - Réseau social d'entreprise
+# <a  href="https://openclassrooms.com/fr/paths/717-developpeur-web"  title="openclassrooms"><img  src="https://upload.wikimedia.org/wikipedia/fr/0/0d/Logo_OpenClassrooms.png"  alt="openclassrooms"  width="35px"  height="31px"></a> Projet 7 - Openclassrooms - DEVELOPPEUR WEB
 
-## PROJET 7 - OPENCLASSROOMS - DEVELOPPEUR WEB
+# Réseau social d'entreprise
+
 
 ## Le projet contient les technologies suivantes:
 
